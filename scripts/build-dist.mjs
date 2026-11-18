@@ -105,6 +105,7 @@ function writeTempBuilderConfig(configPath, extraConfig) {
     extraResources,
     asar: true,
     compression: 'normal',
+    publish: null,
     win: {
       signAndEditExecutable: false,
       artifactName: `\${productName}-\${version}-\${arch}-${isFull ? 'full-' : ''}\${target}.\${ext}`,
@@ -183,7 +184,7 @@ function buildPortable(electronBuilderBin, tmpConfigPath) {
       buildResources: 'build',
     },
   });
-  run(electronBuilderBin, ['--win', '--x64', '--dir', '--config', tmpConfigPath]);
+  run(electronBuilderBin, ['--win', '--x64', '--dir', '--publish', 'never', '--config', tmpConfigPath]);
 
   fs.renameSync(unpackedDir, portableDir);
   fs.rmSync(stagingOutDir, { recursive: true, force: true });
@@ -247,7 +248,7 @@ function buildInstaller(electronBuilderBin, tmpConfigPath) {
       artifactName: installerFileName,
     },
   });
-  run(electronBuilderBin, ['--win', '--x64', '--config', tmpConfigPath]);
+  run(electronBuilderBin, ['--win', '--x64', '--publish', 'never', '--config', tmpConfigPath]);
 
   const builtInstaller = path.join(stagingOutDir, installerFileName);
   const finalInstaller = path.join(root, 'release', installerFileName);

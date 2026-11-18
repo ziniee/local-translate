@@ -1,6 +1,6 @@
 {
   "name": "local-translate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Offline Local LLM Translator for Windows powered by embedded llama.cpp",
   "author": "LocalTranslate",
   "main": "dist/main/index.cjs",
