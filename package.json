@@ -1,0 +1,46 @@
+{
+  "name": "local-translate",
+  "version": "1.0.0",
+  "description": "Offline Local LLM Translator for Windows powered by embedded llama.cpp",
+  "author": "LocalTranslate",
+  "main": "dist/main/index.cjs",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build:electron": "node scripts/build-electron.mjs",
+    "build:renderer": "vite build",
+    "build": "npm run build:electron && npm run build:renderer",
+    "start": "npm run build && electron .",
+    "fetch:engines": "node scripts/fetch-llama-binaries.mjs",
+    "fetch:engines:lite": "node scripts/fetch-llama-binaries.mjs vulkan cpu",
+    "build:portable": "node scripts/build-dist.mjs portable",
+    "build:portable:full": "node scripts/build-dist.mjs portable --full",
+    "build:portable:with-models": "node scripts/build-dist.mjs portable --with-models",
+    "build:installer": "node scripts/build-dist.mjs installer",
+    "build:installer:full": "node scripts/build-dist.mjs installer --full",
+    "build:github": "node scripts/build-dist.mjs github",
+    "build:win": "node scripts/build-dist.mjs portable",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "lucide-react": "^0.475.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.9",
+    "@types/node": "^22.13.5",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^35.0.0",
+    "electron-builder": "^25.1.8",
+    "esbuild": "^0.25.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.9",
+    "typescript": "^5.7.3",
+    "vite": "^6.2.0",
+    "vitest": "^3.0.7"
+  }
+}

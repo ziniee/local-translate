@@ -1,0 +1,32 @@
+appId: com.localtranslate.app
+productName: LocalTranslate
+copyright: Copyright © 2026 LocalTranslate
+directories:
+  output: release
+  buildResources: build
+files:
+  - dist/**/*
+  - package.json
+extraResources:
+  - from: resources/engines
+    to: engines
+    filter:
+      - "**/*"
+win:
+  signAndEditExecutable: false
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+  artifactName: "${productName}-${version}-${arch}-${target}.${ext}"
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: LocalTranslate
+asar: true
+compression: normal
